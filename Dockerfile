@@ -38,5 +38,5 @@ RUN wget http://ftp.gnu.org/gnu/glpk/glpk-$GLPK_VER.tar.gz && \
     make install && make distclean && \
     cd .. && rm -Rf glpk-$GLPK_VER && rm glpk-$GLPK_VER.tar.gz
 
-CMD ["python3"]
+CMD ["/bin/sh"]
 
