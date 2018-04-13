@@ -3,6 +3,7 @@ FROM python:3.6.4-alpine3.7
 # Set required utility program versions
 ENV SWIG_VER 3.0.12
 ENV GLPK_VER 4.65
+ENV PYBUILDER_VER 0.11.12
 
 # Runtime Dependencies
 RUN apk update \
@@ -37,6 +38,9 @@ RUN wget http://ftp.gnu.org/gnu/glpk/glpk-$GLPK_VER.tar.gz && \
     ./configure --prefix=/usr && make && make check && \
     make install && make distclean && \
     cd .. && rm -Rf glpk-$GLPK_VER && rm glpk-$GLPK_VER.tar.gz
+
+# Install PyBuilder
+RUN pip install pybuilder==$PYBUILDER_VER
 
 CMD ["/bin/sh"]
 
